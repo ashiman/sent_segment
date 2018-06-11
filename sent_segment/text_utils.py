@@ -15,11 +15,11 @@ from nltk import ngrams
 from unidecode import unidecode
 import enchant
 
-from utils import d_uk, d_us, stop_words, top_5000_words_dict
-from settings.common import COMMON_WORDS_THRESHOLD
-from utils import d_uk, d_us, stop_words, top_5000_words_dict
+from sent_segment import d_uk, d_us, stop_words, top_5000_words_dict
+from common import COMMON_WORDS_THRESHOLD
+from sent_segment import d_uk, d_us, stop_words, top_5000_words_dict
 
-from settings.local import COMMON_ABBREVS, COMMON_SHORT_FORMS, SHORT_FORMS_REGEX, TAG_PREFIX, TAG_SUFFIX, \
+from local import COMMON_ABBREVS, COMMON_SHORT_FORMS, SHORT_FORMS_REGEX, TAG_PREFIX, TAG_SUFFIX, \
     COMMON_UNITS
 
 def read_messages(filename):

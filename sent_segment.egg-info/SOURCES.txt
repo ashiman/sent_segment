@@ -1,4 +1,5 @@
 README.md
+setup.cfg
 setup.py
 sent_segment/__init__.py
 sent_segment/language_utility.py
@@ -7,18 +8,3 @@ sent_segment.egg-info/SOURCES.txt
 sent_segment.egg-info/dependency_links.txt
 sent_segment.egg-info/requires.txt
 sent_segment.egg-info/top_level.txt
-sent_segment/preprocessor/__init__.py
-sent_segment/preprocessor/preprocessor.py
-sent_segment/preprocessor/tagger.py
-sent_segment/settings/__init__.py
-sent_segment/settings/common.py
-sent_segment/settings/dev.py
-sent_segment/settings/entity_tagging.py
-sent_segment/settings/indic_settings.py
-sent_segment/settings/local.py
-sent_segment/settings/prod.py
-sent_segment/settings/stag.py
-sent_segment/utils/__init__.py
-sent_segment/utils/misc_utils.py
-sent_segment/utils/spacy_utils.py
-sent_segment/utils/text_utils.py

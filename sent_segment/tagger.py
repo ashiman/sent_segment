@@ -3,10 +3,10 @@
 import re
 import string
 
-from settings.entity_tagging import COMMON_HONORIFICS, COMMON_UNITS
-from utils.text_utils import is_dict_word, segment_text, is_common_phrase
-from settings.local import TAG_SUFFIX, TAG_PREFIX
-from utils.misc_utils import multikeysort, MyHTMLParser
+from entity_tagging import COMMON_HONORIFICS, COMMON_UNITS
+from text_utils import is_dict_word, segment_text, is_common_phrase
+from local import TAG_SUFFIX, TAG_PREFIX
+from misc_utils import multikeysort, MyHTMLParser
 
 
 def replace_alnum(text, tagged_dict):

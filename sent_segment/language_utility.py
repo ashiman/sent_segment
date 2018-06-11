@@ -1,6 +1,5 @@
-from preprocessor.preprocessor import segment_sentences
+from preprocessor import segment_sentences
 from sent_segment import spacy_utils
-# from sentence_segmentation import spacy_utils
 
 
 def sentence_segmentation(data, contexts= None, delims = None):

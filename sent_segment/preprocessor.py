@@ -3,7 +3,7 @@ import string
 import time
 from collections import defaultdict
 from operator import itemgetter
-from utils.text_utils import cleanup_text, normalize, improve_punctuation, is_stop_word, is_common_phrase
+from text_utils import cleanup_text, normalize, improve_punctuation, is_stop_word, is_common_phrase
 from tagger import remove_tagged_terms, tag_non_dictionary_word, tag_spacy_entities
 from tagger import replace_account_number, replace_code, replace_date, \
     replace_email, replace_quantity, replace_ordinal, replace_cardinal
