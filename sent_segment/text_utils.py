@@ -19,21 +19,21 @@ def cleanup_text(text):
     text = text.strip()
     if not text:
         return None
-    text = unicode(' '.join([t.strip() for t in text.split() if t.strip()]))
+    text = ' '.join([t.strip() for t in text.split() if t.strip()])
     text = text.replace('\n', ' ').replace('.!', '!').replace('.?', '?').replace(u'’', "'")
     text = ' '.join([t.strip() for t in text.replace('&', ' and ').replace('@', ' at ').split() if t.strip()])
     text = re.sub(TAG_SUFFIX + TAG_PREFIX, TAG_SUFFIX + ' ' + TAG_PREFIX, text)
-    text = re.sub(ur'\s+([.!?:,\)])', ur'\1', text)
+    text = re.sub(r'\s+([.!?:,\)])', r'\1', text)
     text = unidecode(text)
     return text
 
 
 def improve_punctuation(text, strip=True):
-    text = re.sub(ur'(no\.|num\.)(\s)(\d+|xx+)\b', '\1\3', text, re.IGNORECASE)
-    text = re.sub(ur'([.,!?;:%])([a-zA-Z]+)', r'\1 \2', text)
-    text = re.sub(ur'\b(\w+)(\([\w\s]{2,}\))', ur'\1 \2', text)
+    text = re.sub(r'(no\.|num\.)(\s)(\d+|xx+)\b', '\1\3', text, re.IGNORECASE)
+    text = re.sub(r'([.,!?;:%])([a-zA-Z]+)', r'\1 \2', text)
+    text = re.sub(r'\b(\w+)(\([\w\s]{2,}\))', r'\1 \2', text)
     if strip:
-        text = re.sub(ur'(\w+|<\w+>)\s+([.,!?;:%])', r'\1\2', text)
+        text = re.sub(r'(\w+|<\w+>)\s+([.,!?;:%])', r'\1\2', text)
         text = ' '.join(text.split())
     return text
 
@@ -48,7 +48,7 @@ def normalize(text):
             tokens[idx] = COMMON_ABBREVS.get(term.lower())
         # elif term.lower() in COMMON_SHORT_FORMS:
         #     tokens[idx] = COMMON_SHORT_FORMS.get(term.lower())
-    text = unicode(' '.join(tokens))
+    text = ' '.join(tokens)
     for pattern, value in SHORT_FORMS_REGEX.iteritems():  # strings like acc into account
         text = re.sub(pattern, value, text, flags=re.IGNORECASE)
     return text

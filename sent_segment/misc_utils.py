@@ -1,5 +1,6 @@
 import numpy as np
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
+from functools import cmp_to_key
 
 
 def get_quantile(nums, q):
@@ -23,7 +24,7 @@ def multikeysort(items, columns):
         else:
             return 0
 
-    return sorted(items, cmp=comparer)
+    return sorted(items, key=cmp_to_key(comparer))
 
 
 """

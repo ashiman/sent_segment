@@ -11,7 +11,7 @@ from sent_segment.misc_utils import multikeysort, MyHTMLParser
 
 def replace_alnum(text, tagged_dict):
     tag_name = TAG_PREFIX + r'ALNUM' + TAG_SUFFIX
-    pattern = re.compile(ur'\b((?=[A-Za-z\/-]{0,19}\d)[A-Za-z0-9-,\/]{4,20})\b')
+    pattern = re.compile(r'\b((?=[A-Za-z\/-]{0,19}\d)[A-Za-z0-9-,\/]{4,20})\b')
 
     #pattern = re.compile(ur'\b(([A-Z/ -]{0,19}\d)[A-Z0-9/ -,]{4,20})\b')
     alnums = pattern.findall(text)
@@ -56,13 +56,13 @@ def replace_name(text, tagged_dict):
 
 def replace_money(text, tagged_dict):
     tag_name = TAG_PREFIX + r'AMOUNT' + TAG_SUFFIX
-    re_1 = re.compile(ur'(₹|\brs|usd|rupees|inr)(\.)?(\s)?(\d+|xx+)(,\d+|,xx+)*(\.\d+|xx+)?\b', re.IGNORECASE)
+    re_1 = re.compile(r'(₹|\brs|usd|rupees|inr)(\.)?(\s)?(\d+|xx+)(,\d+|,xx+)*(\.\d+|xx+)?\b', re.IGNORECASE)
     if re.search(re_1, text):
         amounts = re.findall(re_1, text)
         for amt in amounts:
             tagged_dict[tag_name].append(''.join(amt).strip())
         return re.sub(re_1, tag_name, text)
-    re_2 = re.compile(ur'\b(\d+|xx+)(\s)?(lakhs|lakh|lacs|lac|crores|crore|cr)\b', re.IGNORECASE)
+    re_2 = re.compile(r'\b(\d+|xx+)(\s)?(lakhs|lakh|lacs|lac|crores|crore|cr)\b', re.IGNORECASE)
     if re.search(re_2, text):
         amounts = re.findall(re_2, text)
         for amt in amounts:
@@ -77,13 +77,13 @@ def replace_time(text, tagged_dict):
     text = re.sub("p.m.", "pm", text, flags=re.IGNORECASE)
 
     tag_name = TAG_PREFIX + r'TIME' + TAG_SUFFIX
-    dts = re.findall(ur'\b(\d{1,2}\s?:\s?\d{2}\s?)(:\s?\d{2})?(\s)*(am|pm|a.m.|p.m.|oclock|o\'clock)?\b',
+    dts = re.findall(r'\b(\d{1,2}\s?:\s?\d{2}\s?)(:\s?\d{2})?(\s)*(am|pm|a.m.|p.m.|oclock|o\'clock)?\b',
                      text, flags=re.IGNORECASE)
     for dt in dts:
         dt_val = ''.join(dt).strip()
         tagged_dict[tag_name].append(dt_val)
         text = re.sub(dt_val, tag_name, text, flags=re.IGNORECASE, count=1)
-    dts = re.findall(ur'\b(\d{1,2})(\s)*(am|pm|a.m.|p.m.|oclock|o\'clock)\b', text, flags=re.IGNORECASE)
+    dts = re.findall(r'\b(\d{1,2})(\s)*(am|pm|a.m.|p.m.|oclock|o\'clock)\b', text, flags=re.IGNORECASE)
     for dt in dts:
         dt_val = ''.join(dt).strip()
         tagged_dict[tag_name].append(dt_val)
@@ -95,37 +95,37 @@ def replace_time(text, tagged_dict):
 
 def replace_tzinfo(text, tagged_dict):
     tag_name = TAG_PREFIX + r'TIMEZONE' + TAG_SUFFIX
-    tzs = re.findall(ur'\b(gmt)(\+)?\s?(\d{1,2}|x+)(:)?(\d{1,2}|x+)?\b', text, flags=re.IGNORECASE)
+    tzs = re.findall(r'\b(gmt)(\+)?\s?(\d{1,2}|x+)(:)?(\d{1,2}|x+)?\b', text, flags=re.IGNORECASE)
     for tz in tzs:
         tz_val = ''.join(tz).strip()
         tagged_dict[tag_name].append(tz_val)
-    return re.sub(ur'\b(gmt)(\+)?\s?(\d{1,2}|x+)(:)?(\d{1,2}|x+)?\b', tag_name, text, flags=re.IGNORECASE)
+    return re.sub(r'\b(gmt)(\+)?\s?(\d{1,2}|x+)(:)?(\d{1,2}|x+)?\b', tag_name, text, flags=re.IGNORECASE)
 
 
 def replace_ordinal(text, tagged_dict):
     tag_name = TAG_PREFIX + r'ORDINAL' + TAG_SUFFIX
-    ordinals = re.findall(ur'\b(\d+)(nd|th|rd|st)\b', text, flags=re.IGNORECASE)
+    ordinals = re.findall(r'\b(\d+)(nd|th|rd|st)\b', text, flags=re.IGNORECASE)
     for ordinal in ordinals:
         tagged_dict[tag_name].append(''.join(ordinal).strip())
-    return re.sub(ur'\b(\d+)(nd|th|rd|st)\b', tag_name, text, flags=re.IGNORECASE)
+    return re.sub(r'\b(\d+)(nd|th|rd|st)\b', tag_name, text, flags=re.IGNORECASE)
 
 
 def replace_cardinal(text, tagged_dict):
     original_tokens = text.split()
 
     tag_name = TAG_PREFIX + r'CARDINAL' + TAG_SUFFIX
-    nums = re.findall(ur'(\d+\.?\d*)(\s+)(thousand|million|billion|trillion|lac|lakh|crore)\b',
+    nums = re.findall(r'(\d+\.?\d*)(\s+)(thousand|million|billion|trillion|lac|lakh|crore)\b',
                       text, re.IGNORECASE)
     for n in nums:
         tagged_dict[tag_name].append(''.join(n).strip())
-    text = re.sub(ur'(\d+\.?\d*)(\s+)(thousand|million|billion|trillion|lac|lakh|crore)\b',
+    text = re.sub(r'(\d+\.?\d*)(\s+)(thousand|million|billion|trillion|lac|lakh|crore)\b',
                   tag_name, text, flags=re.IGNORECASE)
 
     biggies = ['thousand', 'million', 'billion', 'trillion', 'lac', 'lakh', 'crore']
-    num_regex = ur'\b(one|eleven|two|twelve|three|thirteen|four|fourteen|five|fifteen|' \
-                ur'six|sixteen|seven|seventeen|eight|eighteen|nine|nineteen|ten|twenty|thirty|' \
-                ur'forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|' \
-                ur'trillion|lac|lakh|crore)\b'
+    num_regex = r'\b(one|eleven|two|twelve|three|thirteen|four|fourteen|five|fifteen|' \
+                r'six|sixteen|seven|seventeen|eight|eighteen|nine|nineteen|ten|twenty|thirty|' \
+                r'forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|' \
+                r'trillion|lac|lakh|crore)\b'
     tokens = re.findall(r"[\w']+|[.,!?;]", text)
     numbers = re.findall(num_regex, text, re.IGNORECASE)
     num_groups = list()
@@ -135,7 +135,7 @@ def replace_cardinal(text, tagged_dict):
         for token in tokens[idx:]:
             if token.lower() in biggies:
                 if tokens.index(token) != 0:
-                    if re.match(ur'\d+\.?\d*', tokens[tokens.index(token) - 1]):
+                    if re.match(r'\d+\.?\d*', tokens[tokens.index(token) - 1]):
                         idx += 2
                         break
             if token in numbers:
@@ -169,16 +169,16 @@ def replace_date(text, tagged_dict, tag_name=None):
     original_tokens = text.split()
     if not tag_name:
         tag_name = TAG_PREFIX + r'DATE' + TAG_SUFFIX
-    dates = re.findall(ur'\b(\d{1,2}\s*[/\-]\s*\d{1,2}\s*[/\-]\s*\d{2,4})\b',
+    dates = re.findall(r'\b(\d{1,2}\s*[/\-]\s*\d{1,2}\s*[/\-]\s*\d{2,4})\b',
                        text, flags=re.IGNORECASE)
     for dt in dates:
         tagged_dict[tag_name].append(''.join(dt).strip())
-    text = re.sub(ur'\b(\d{1,2}\s*[/\-]\s*\d{1,2}\s*[/\-]\s*\d{2,4})\b', tag_name,
+    text = re.sub(r'\b(\d{1,2}\s*[/\-]\s*\d{1,2}\s*[/\-]\s*\d{2,4})\b', tag_name,
                   text, flags=re.IGNORECASE)
 
-    dates = re.findall(ur'\b(\d{1,2}|xx+)(nd|th|rd|st)?(\s)?(january|jan|february|feb|march|mar|'
-                       ur'april|apr|may|june|jun|july|jul|august|aug|september|sept|sep|october|'
-                       ur'oct|november|nov|december|dec)(\s)?(,)?(\s)?(\d{2,4}|x+)?\b',
+    dates = re.findall(r'\b(\d{1,2}|xx+)(nd|th|rd|st)?(\s)?(january|jan|february|feb|march|mar|'
+                       r'april|apr|may|june|jun|july|jul|august|aug|september|sept|sep|october|'
+                       r'oct|november|nov|december|dec)(\s)?(,)?(\s)?(\d{2,4}|x+)?\b',
                        text, flags=re.IGNORECASE)
 
     for dt in dates:
@@ -186,9 +186,9 @@ def replace_date(text, tagged_dict, tag_name=None):
         tagged_dict[tag_name].append(dt_val)
         text = re.sub(dt_val, tag_name, text, flags=re.IGNORECASE)
 
-    dates = re.findall(ur'\b(january|jan|february|feb|march|mar|april|apr|may|june|jun|'
-                       ur'july|jul|august|aug|september|sept|sep|october|oct|november|nov'
-                       ur'december|dec)(\s)?(\d{1,2}|xx+)(nd|th|rd|st)?(\s)?(\d{,4}|x+)?\b',
+    dates = re.findall(r'\b(january|jan|february|feb|march|mar|april|apr|may|june|jun|'
+                       r'july|jul|august|aug|september|sept|sep|october|oct|november|nov'
+                       r'december|dec)(\s)?(\d{1,2}|xx+)(nd|th|rd|st)?(\s)?(\d{,4}|x+)?\b',
                        text, flags=re.IGNORECASE)
     for dt in dates:
         dt_val = ''.join(dt).strip()
@@ -203,8 +203,8 @@ def replace_date(text, tagged_dict, tag_name=None):
 
 def replace_phone_number(text, tagged_dict):
     tag_name = TAG_PREFIX + r'PHONENUMBER' + TAG_SUFFIX
-    phones = re.findall(ur'\b(ph:|mobile|mobile no.|call on|calling on|calling|call us|'
-                        ur'call [a-z]* @|sms [a-z]*|contact|call)\s\+?(\d+|xx+)\b',
+    phones = re.findall(r'\b(ph:|mobile|mobile no.|call on|calling on|calling|call us|'
+                        r'call [a-z]* @|sms [a-z]*|contact|call)\s\+?(\d+|xx+)\b',
                         text, flags=re.IGNORECASE)
     for ph in phones:
         ph_val = ''.join(ph[1:])
@@ -220,34 +220,34 @@ def replace_url(text, tagged_dict, tag_name=None):
     original_tokens = text.split()
 
     tag_name = TAG_PREFIX + r'URL' + TAG_SUFFIX
-    url_regex = ur"(?i)\b((?:https?:(?:/{1,3}|[a-z0-9%])|[a-z0-9.\-]+[.](?:com|net|org|"\
-                      ur'edu|gov|mil|aero|asia|biz|cat|coop|info|int|jobs|mobi|museum|name|'\
-                      ur'post|pro|tel|travel|xxx|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|'\
-                      ur'aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|'\
-                      ur'cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cs|cu|cv|cx|cy|cz|dd|de|dj|dk|dm|'\
-                      ur'do|dz|ec|ee|eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|'\
-                      ur'gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|'\
-                      ur'io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|'\
-                      ur'li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|me|mg|mh|mk|ml|mm|mn|mo|mp|mq|mr|ms|'\
-                      ur'mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|om|pa|pe|pf|'\
-                      ur'pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ro|rs|ru|rw|sa|sb|sc|sd|se|sg|'\
-                      ur'sh|si|sj|Ja|sk|sl|sm|sn|so|sr|ss|st|su|sv|sx|sy|sz|tc|td|tf|tg|th|tj|'\
-                      ur'tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|vc|ve|vg|vi|vn|'\
-                      ur'vu|wf|ws|ye|yt|yu|za|zm|zw)/)(?:[^\s()<>{}\[\]]+|\([^\s()]*?\([^\s()]+\)'\
-                      ur'[^\s()]*?\)|\([^\s]+?\))+(?:\([^\s()]*?\([^\s()]+\)[^\s()]*?\)|\([^\s]+?\)|'\
-                      ur"""[^\s`!()\[\]{};:'".,<>?«»“”‘’])|(?:(?<!@)[a-z0-9]+(?:[.\-][a-z0-9]+)*[.]"""\
-                      ur"(?:com|net|org|edu|gov|mil|aero|asia|biz|cat|coop|info|int|jobs|mobi|museum|"\
-                      ur"name|post|pro|tel|travel|xxx|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|"\
-                      ur"aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|"\
-                      ur"cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cs|cu|cv|cx|cy|cz|dd|de|dj|dk|dm|do|dz|ec|ee|"\
-                      ur"eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|"\
-                      ur"gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|"\
-                      ur"jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|"\
-                      ur"md|me|mg|mh|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|"\
-                      ur"ni|nl|no|np|nr|nu|nz|om|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ro|"\
-                      ur"rs|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|Ja|sk|sl|sm|sn|so|sr|ss|st|su|sv|sx|sy|"\
-                      ur"sz|tc|td|tf|tg|th|tj|tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|"\
-                      ur"vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw)\b/?(?!@)))\b"
+    url_regex = r"(?i)\b((?:https?:(?:/{1,3}|[a-z0-9%])|[a-z0-9.\-]+[.](?:com|net|org|"\
+                      r'edu|gov|mil|aero|asia|biz|cat|coop|info|int|jobs|mobi|museum|name|'\
+                      r'post|pro|tel|travel|xxx|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|'\
+                      r'aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|'\
+                      r'cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cs|cu|cv|cx|cy|cz|dd|de|dj|dk|dm|'\
+                      r'do|dz|ec|ee|eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|'\
+                      r'gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|'\
+                      r'io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|'\
+                      r'li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|me|mg|mh|mk|ml|mm|mn|mo|mp|mq|mr|ms|'\
+                      r'mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|om|pa|pe|pf|'\
+                      r'pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ro|rs|ru|rw|sa|sb|sc|sd|se|sg|'\
+                      r'sh|si|sj|Ja|sk|sl|sm|sn|so|sr|ss|st|su|sv|sx|sy|sz|tc|td|tf|tg|th|tj|'\
+                      r'tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|vc|ve|vg|vi|vn|'\
+                      r'vu|wf|ws|ye|yt|yu|za|zm|zw)/)(?:[^\s()<>{}\[\]]+|\([^\s()]*?\([^\s()]+\)'\
+                      r'[^\s()]*?\)|\([^\s]+?\))+(?:\([^\s()]*?\([^\s()]+\)[^\s()]*?\)|\([^\s]+?\)|'\
+                      r"""[^\s`!()\[\]{};:'".,<>?«»“”‘’])|(?:(?<!@)[a-z0-9]+(?:[.\-][a-z0-9]+)*[.]"""\
+                      r"(?:com|net|org|edu|gov|mil|aero|asia|biz|cat|coop|info|int|jobs|mobi|museum|"\
+                      r"name|post|pro|tel|travel|xxx|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|"\
+                      r"aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|"\
+                      r"cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cs|cu|cv|cx|cy|cz|dd|de|dj|dk|dm|do|dz|ec|ee|"\
+                      r"eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|"\
+                      r"gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|"\
+                      r"jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|"\
+                      r"md|me|mg|mh|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|"\
+                      r"ni|nl|no|np|nr|nu|nz|om|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ro|"\
+                      r"rs|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|Ja|sk|sl|sm|sn|so|sr|ss|st|su|sv|sx|sy|"\
+                      r"sz|tc|td|tf|tg|th|tj|tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|"\
+                      r"vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw)\b/?(?!@)))\b"
     urls = re.findall(url_regex, text)
     for url in urls:
         url_val = ''.join(url).strip()
@@ -256,16 +256,16 @@ def replace_url(text, tagged_dict, tag_name=None):
 
     text = re.sub(url_regex, tag_name, text, flags=re.IGNORECASE)
 
-    urls = re.findall(ur'(?i)\b((?:https?://|www\d{0,3}[.]|[a-zA-Z0-9.\-]+[.][a-zA-Z]{2,4}/)'
-                      ur'(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+'
-                      ur'(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{}'
-                      ur';:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))', text)
+    urls = re.findall(r'(?i)\b((?:https?://|www\d{0,3}[.]|[a-zA-Z0-9.\-]+[.][a-zA-Z]{2,4}/)'
+                      r'(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+'
+                      r'(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{}'
+                      r';:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))', text)
     for url in urls:
         url_val = ''.join(url).strip()
         tagged_dict[tag_name].append(url_val)
         text = re.sub(url_val, tag_name, text, re.IGNORECASE)
 
-    urls = re.findall(ur'\b([\w]+\s?\.co\s?\.in|[\w]+\s?\.com)\b', text)
+    urls = re.findall(r'\b([\w]+\s?\.co\s?\.in|[\w]+\s?\.com)\b', text)
     for url in urls:
         url_val = ''.join(url).strip()
         tagged_dict[tag_name].append(url_val)
@@ -299,7 +299,7 @@ def replace_hashtag(text, tagged_dict):
 
 def replace_account_number(text, tagged_dict):
     tag_name = TAG_PREFIX + r'ACCOUNTNUMBER' + TAG_SUFFIX
-    ac_nums = re.findall(ur'\b(account|acc|a/c|ac)(\s)*(number|no\.?|num\.?)(\s)*(:|-)?(\s)*(\d+|xx+)\b',
+    ac_nums = re.findall(r'\b(account|acc|a/c|ac)(\s)*(number|no\.?|num\.?)(\s)*(:|-)?(\s)*(\d+|xx+)\b',
                          text, flags=re.IGNORECASE)
     for ac in ac_nums:
         ac_val = ac[-1].strip()
@@ -316,7 +316,7 @@ def replace_code(text, tagged_dict):
         code = code[-1]
         tagged_dict[tag_name].append(code)
         text = re.sub(code, tag_name, text, flags=re.IGNORECASE, count=1)
-    codes = re.findall(ur'\b(xx+\w+x*|\w+xx+\w+)\b',
+    codes = re.findall(r'\b(xx+\w+x*|\w+xx+\w+)\b',
                        text, flags=re.IGNORECASE)
     for code in codes:
         code = ''.join(code)
@@ -331,27 +331,27 @@ def replace_code(text, tagged_dict):
 
 def replace_unicode_strings(text, tagged_dict):
     tag_name = TAG_PREFIX + r'UNICODESTRING' + TAG_SUFFIX
-    unicode_strings = re.findall(ur'\b(U\+[0-9a-fA-F]{4,})\b', text, flags=re.IGNORECASE)
+    unicode_strings = re.findall(r'\b(U\+[0-9a-fA-F]{4,})\b', text, flags=re.IGNORECASE)
     for uni_str in unicode_strings:
         value = ''.join(uni_str).strip()
         tagged_dict[tag_name].append(value)
-    return re.sub(ur'\b(U\+[0-9a-fA-F]{4,})\b', tag_name, text, flags=re.IGNORECASE)
+    return re.sub(r'\b(U\+[0-9a-fA-F]{4,})\b', tag_name, text, flags=re.IGNORECASE)
 
 
 def replace_placeholders(text, tagged_dict):
     tag_name = TAG_PREFIX + r'PLACEHOLDER' + TAG_SUFFIX
-    placeholders = re.findall(ur'((%\d+\$[a-z]+\s?,?\s*)+\b)', text, flags=re.IGNORECASE)
+    placeholders = re.findall(r'((%\d+\$[a-z]+\s?,?\s*)+\b)', text, flags=re.IGNORECASE)
     for ph in placeholders:
         if not len(ph):
             continue
         value = ''.join(ph[0]).strip()
         tagged_dict[tag_name].append(value)
-    return re.sub(ur'((%\d+\$[a-z]+\s?,?\s*)+\b)', tag_name, text, flags=re.IGNORECASE, count=1)
+    return re.sub(r'((%\d+\$[a-z]+\s?,?\s*)+\b)', tag_name, text, flags=re.IGNORECASE, count=1)
 
 
 def replace_html_entities(text, tagged_dict):
     tag_name = TAG_PREFIX + r'HTMLENTITY' + TAG_SUFFIX
-    html_entities = re.findall(ur'(&[a-zA-Z]+;)', text, flags=re.IGNORECASE)
+    html_entities = re.findall(r'(&[a-zA-Z]+;)', text, flags=re.IGNORECASE)
     for ent in html_entities:
         value = ''.join(ent).strip()
         tagged_dict[tag_name].append(value)
@@ -372,10 +372,10 @@ def replace_html_tags(text, tagged_dict):
 
 def replace_percentage(text, tagged_dict):
     tag_name = TAG_PREFIX + r'PERCENT' + TAG_SUFFIX
-    percentages = re.findall(ur'\b(\d+\.?\d*\s*%|xx+\.?xx*\s*%)', text, flags=re.IGNORECASE)
+    percentages = re.findall(r'\b(\d+\.?\d*\s*%|xx+\.?xx*\s*%)', text, flags=re.IGNORECASE)
     for perc in percentages:
         tagged_dict[tag_name].append(''.join(perc).strip())
-    return re.sub(ur'\b(\d+\.?\d*\s*%|xx+\.?xx*\s*%)', tag_name, text, flags=re.IGNORECASE)
+    return re.sub(r'\b(\d+\.?\d*\s*%|xx+\.?xx*\s*%)', tag_name, text, flags=re.IGNORECASE)
 
 
 def replace_number(text, tagged_dict, tag_name=None):
@@ -438,7 +438,7 @@ def replace_hyphenated_terms(text, tagged_dict):
 
 def replace_phrases(text, tagged_dict):
     tag_name = TAG_PREFIX + r'DOMAINPHRASE' + TAG_SUFFIX
-    hyphenated_terms = re.findall(ur'(\w+(\-\w+)+)', text)
+    hyphenated_terms = re.findall(r'(\w+(\-\w+)+)', text)
     for hyph_term in hyphenated_terms:
         if not len(hyph_term):
             continue
@@ -541,7 +541,7 @@ def remove_tagged_terms(text):
 
 def replace_unknown_terms(text, tagged_dict):
     tag_name = TAG_PREFIX + 'UNKNOWN' + TAG_SUFFIX
-    pattern = ur'((\w+\.)+[a-zA-Z$]+)'
+    pattern = r'((\w+\.)+[a-zA-Z$]+)'
     unknowns = re.findall(pattern, text)
     for unk in unknowns:
         if not len(unk):

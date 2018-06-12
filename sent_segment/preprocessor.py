@@ -38,7 +38,7 @@ def segment_sentences(query, pre_tags=None, strip=True, context=None, delim=None
 def ac_num_hack1(query, temp_tags):
     """Dirty hack to take care of semgentation issues. If I don't do this
     sentece sentence_segmentation will segment at the '.' I am not proud."""
-    ac_nums = re.findall(ur'\b(no\.|num\.)(\s)*(:|-)?(\s)*(\d+|xx+)\b', query, re.IGNORECASE)
+    ac_nums = re.findall(r'\b(no\.|num\.)(\s)*(:|-)?(\s)*(\d+|xx+)\b', query, re.IGNORECASE)
     tag = 'ACTEMPTAG'
     for ac in ac_nums:
         ac = ''.join(ac)
@@ -54,7 +54,7 @@ def ac_num_hack2(query, temp_tags):
 
 
 def restore_regex_tags(pre_tags, sent):
-    for tag, values in pre_tags.iteritems():
+    for tag, values in pre_tags.items():
         tag_count = sent.count(tag)
         if not tag_count:
             continue
