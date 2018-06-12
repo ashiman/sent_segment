@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a553d782-a814-446c-917f-39cd046049b3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sent_segment/common.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sent_segment/entity_tagging.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sent_segment/indic_settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sent_segment/misc_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sent_segment/preprocessor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sent_segment/prod.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sent_segment/spacy_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sent_segment/stag.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sent_segment/tagger.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sent_segment/text_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sent_segment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sent_segment.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sent_segment-1.0.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/sent_segment-1.tar.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sent_segment.egg-info/PKG-INFO" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sent_segment.egg-info/SOURCES.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sent_segment.egg-info/dependency_links.txt" beforeDir="false" />
@@ -22,25 +12,8 @@
       <change beforePath="$PROJECT_DIR$/sent_segment.egg-info/top_level.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sent_segment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sent_segment/language_utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/language_utility.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/preprocessor/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/preprocessor/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/preprocessor/preprocessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/preprocessor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/preprocessor/tagger.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/tagger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/settings/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/settings/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/settings/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/settings/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/dev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/settings/entity_tagging.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/entity_tagging.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/settings/indic_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/indic_settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/settings/local.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/local.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/settings/prod.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/prod.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/settings/stag.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/stag.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/utils/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/utils/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/utils/misc_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/misc_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/utils/spacy_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/spacy_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/utils/text_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/text_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sent_segment/tagger.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/tagger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sent_segment/text_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/text_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,11 +25,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dev.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sent_segment/dev.py">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sent_segment/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="3" selection-start-column="3" selection-end-column="3" />
+            <state relative-caret-position="135">
+              <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/setup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -64,21 +46,10 @@
       <file leaf-file-name="language_utility.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sent_segment/language_utility.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+            <state relative-caret-position="285">
+              <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
               <folding>
-                <element signature="e#0#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="local.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sent_segment/local.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
+                <element signature="e#0#42#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,15 +63,10 @@
       <file leaf-file-name="preprocessor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sent_segment/preprocessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+            <state relative-caret-position="15">
+              <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="prod.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sent_segment/prod.py">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="spacy_utils.py" pinned="false" current-in-tab="false">
@@ -114,16 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stag.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sent_segment/stag.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file leaf-file-name="tagger.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sent_segment/tagger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="270">
+              <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
               <folding>
                 <element signature="e#25#34#0" expanded="true" />
               </folding>
@@ -131,12 +92,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="text_utils.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stag.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sent_segment/stag.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="text_utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sent_segment/text_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+            <state relative-caret-position="225">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+              <folding>
+                <element signature="e#25#38#0" expanded="true" />
+              </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wordsegment.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/rosettaenv/lib/python2.7/site-packages/wordsegment.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-27" />
           </provider>
         </entry>
       </file>
@@ -157,12 +133,12 @@
       <list>
         <option value="$PROJECT_DIR$/sent_segment/preprocessor/preprocessor.py" />
         <option value="$PROJECT_DIR$/setup.cfg" />
-        <option value="$PROJECT_DIR$/setup.py" />
-        <option value="$PROJECT_DIR$/sent_segment/__init__.py" />
-        <option value="$PROJECT_DIR$/sent_segment/tagger.py" />
-        <option value="$PROJECT_DIR$/sent_segment/language_utility.py" />
         <option value="$PROJECT_DIR$/sent_segment/preprocessor.py" />
+        <option value="$PROJECT_DIR$/sent_segment/__init__.py" />
+        <option value="$PROJECT_DIR$/sent_segment/language_utility.py" />
+        <option value="$PROJECT_DIR$/sent_segment/tagger.py" />
         <option value="$PROJECT_DIR$/sent_segment/text_utils.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
       </list>
     </option>
   </component>
@@ -187,6 +163,10 @@
               <item name="sent_segment" type="b2602c69:ProjectViewProjectNode" />
               <item name="sent_segment" type="462c0819:PsiDirectoryNode" />
               <item name="sent_segment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sent_segment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -261,13 +241,13 @@
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2494043" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32827586" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32827586" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.47586206" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.47586206" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -283,118 +263,28 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/sent_segment/misc_utils.py</url>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sent_segment/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        <state relative-caret-position="11925">
+          <caret line="795" column="1" selection-start-line="795" selection-start-column="1" selection-end-line="795" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment/language_utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="28" lean-forward="true" selection-start-column="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment/settings/dev.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment/utils/text_utils.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment/utils/misc_utils.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment/utils/spacy_utils.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment/preprocessor/preprocessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="11" lean-forward="true" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment.egg-info/dependency_links.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment.egg-info/SOURCES.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment.egg-info/top_level.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment/preprocessor/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.cfg">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment/common.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment/dev.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="3" selection-start-column="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment/language_utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_segment/local.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="135">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -403,8 +293,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sent_segment/preprocessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        <state relative-caret-position="165">
+          <caret line="11" column="85" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
         </state>
       </provider>
     </entry>
@@ -425,8 +315,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sent_segment/tagger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="45">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="e#25#34#0" expanded="true" />
           </folding>
@@ -435,10 +325,175 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sent_segment/text_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="315">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="e#25#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/language_utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/language_utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="28" lean-forward="true" selection-start-column="28" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/settings/dev.py" />
+    <entry file="file://$PROJECT_DIR$/sent_segment/utils/text_utils.py" />
+    <entry file="file://$PROJECT_DIR$/sent_segment/utils/misc_utils.py" />
+    <entry file="file://$PROJECT_DIR$/sent_segment/utils/spacy_utils.py" />
+    <entry file="file://$PROJECT_DIR$/sent_segment/preprocessor/preprocessor.py" />
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment.egg-info/dependency_links.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment.egg-info/SOURCES.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment.egg-info/top_level.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/preprocessor/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/setup.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/common.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/dev.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" selection-start-column="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/local.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/prod.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/language_utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2/collections.pyi">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/preprocessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/spacy_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/misc_utils.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/rosettaenv/lib/python2.7/site-packages/wordsegment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/rosettaenv/lib/python2.7/site-packages/nltk/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="445" column="25" lean-forward="true" selection-start-line="445" selection-start-column="25" selection-end-line="445" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/text_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#25#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/tagger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+          <folding>
+            <element signature="e#25#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_segment/stag.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

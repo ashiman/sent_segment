@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="sent_segment",
     packages = ['sent_segment'],
-    version="1",
+    version="0.0",
     author="Reverie Language Technologies",
     author_email="astha.manchanda@reverieinc.com",
     description="A sentence segmentation API",
@@ -22,6 +22,10 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ),
     install_requires=[
-          'markdown',
+          'spacy==2.0.0',
+          'enchant',
+          'numpy',
+          'wordsegment',
+
       ]
 )

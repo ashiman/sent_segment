@@ -1,5 +1,6 @@
-from preprocessor import segment_sentences
+from sent_segment.preprocessor import segment_sentences
 from sent_segment import spacy_utils
+from __future__ import print_function
 
 
 def sentence_segmentation(data, contexts= None, delims = None):
@@ -34,8 +35,8 @@ def sentence_segmentation(data, contexts= None, delims = None):
 
 
 if __name__ == "__main__":
-    data = [u"Let's meet at 11 p.m."]
+    data = [u"Let's meet at 11 p.m. , we will have fun."]
     segmented_sentences = sentence_segmentation(data)
     # parsed = spacy_utils.parse_text(data)
 
-    print segmented_sentences
+    print (segmented_sentences)

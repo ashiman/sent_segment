@@ -1,4 +1,4 @@
-from spacy_utils import SpacyUtils
+from sent_segment.spacy_utils import SpacyUtils
 name = "sent_segment"
 spacy_utils = SpacyUtils()
 import enchant

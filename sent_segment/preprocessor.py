@@ -3,12 +3,12 @@ import string
 import time
 from collections import defaultdict
 from operator import itemgetter
-from text_utils import cleanup_text, normalize, improve_punctuation, is_stop_word, is_common_phrase
-from tagger import remove_tagged_terms, tag_non_dictionary_word, tag_spacy_entities
-from tagger import replace_account_number, replace_code, replace_date, \
+from sent_segment.text_utils import cleanup_text, normalize, improve_punctuation, is_stop_word, is_common_phrase
+from sent_segment.tagger import remove_tagged_terms, tag_non_dictionary_word, tag_spacy_entities
+from sent_segment.tagger import replace_account_number, replace_code, replace_date, \
     replace_email, replace_quantity, replace_ordinal, replace_cardinal
-from tagger import replace_number, replace_percentage, replace_time, replace_hyphenated_terms
-from tagger import replace_url, replace_phone_number, replace_money, replace_tzinfo, \
+from sent_segment.tagger import replace_number, replace_percentage, replace_time, replace_hyphenated_terms
+from sent_segment.tagger import replace_url, replace_phone_number, replace_money, replace_tzinfo, \
     replace_hashtag, replace_alnum, replace_unicode_strings, replace_html_entities, \
     replace_placeholders, replace_html_tags, replace_number_range, replace_name, \
     replace_version_number, replace_enumeration, replace_phrases, replace_unknown_terms
