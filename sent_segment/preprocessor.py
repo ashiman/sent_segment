@@ -3,18 +3,19 @@ import string
 import time
 from collections import defaultdict
 from operator import itemgetter
-from sent_segment.text_utils import cleanup_text, normalize, improve_punctuation, is_stop_word, is_common_phrase
-from sent_segment.tagger import remove_tagged_terms, tag_non_dictionary_word, tag_spacy_entities
+from sent_segment.text_utils import cleanup_text, normalize, improve_punctuation
+from sent_segment.tagger import remove_tagged_terms
 from sent_segment.tagger import replace_account_number, replace_code, replace_date, \
-    replace_email, replace_quantity, replace_ordinal, replace_cardinal
-from sent_segment.tagger import replace_number, replace_percentage, replace_time, replace_hyphenated_terms
+    replace_email, replace_quantity, replace_ordinal
+from sent_segment.tagger import replace_percentage, replace_time
 from sent_segment.tagger import replace_url, replace_phone_number, replace_money, replace_tzinfo, \
     replace_hashtag, replace_alnum, replace_unicode_strings, replace_html_entities, \
     replace_placeholders, replace_html_tags, replace_number_range, replace_name, \
-    replace_version_number, replace_enumeration, replace_phrases, replace_unknown_terms
+    replace_version_number, replace_enumeration,replace_unknown_terms
 from sent_segment import spacy_utils
 
-def segment_sentences(query, pre_tags=None, strip=True, context=None, delim=None):
+
+def segment_sentences(query, parser=None, pre_tags=None, strip=True, context=None, delim=None):
     """Dirty hack to take care of semgentation issues. If I don't do this
     sentece sentence_segmentation will segment at the '.' I am not proud."""
     temp_tags = list()
@@ -22,9 +23,9 @@ def segment_sentences(query, pre_tags=None, strip=True, context=None, delim=None
     if not pre_tags:
         pre_tags = defaultdict(list)
     query = replace_common_entities(query, pre_tags, True)
-    sentences = spacy_utils.get_sentences(improve_punctuation(query, strip=strip), spacy_utils.parser, context=context,
-                                          delim=delim)
-  #  sentences = get_sentences(improve_punctuation(query, strip=strip), context=context, delim=delim)
+    sentences = spacy_utils.get_sentences(improve_punctuation(query, strip=strip), parser, context=context,
+                                              delim=delim)
+    # sentences = get_sentences(improve_punctuation(query, strip=strip), context=context, delim=delim)
     if pre_tags:
         sentences = [restore_regex_tags(pre_tags, sent) for sent in sentences]
 

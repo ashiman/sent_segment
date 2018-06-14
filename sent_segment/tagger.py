@@ -4,7 +4,7 @@ import re
 import string
 
 from sent_segment.entity_tagging import COMMON_HONORIFICS, COMMON_UNITS
-from sent_segment.text_utils import is_dict_word, segment_text, is_common_phrase
+from sent_segment.text_utils import is_common_phrase
 from sent_segment.local import TAG_SUFFIX, TAG_PREFIX
 from sent_segment.misc_utils import multikeysort, MyHTMLParser
 
@@ -109,60 +109,6 @@ def replace_ordinal(text, tagged_dict):
         tagged_dict[tag_name].append(''.join(ordinal).strip())
     return re.sub(r'\b(\d+)(nd|th|rd|st)\b', tag_name, text, flags=re.IGNORECASE)
 
-
-def replace_cardinal(text, tagged_dict):
-    original_tokens = text.split()
-
-    tag_name = TAG_PREFIX + r'CARDINAL' + TAG_SUFFIX
-    nums = re.findall(r'(\d+\.?\d*)(\s+)(thousand|million|billion|trillion|lac|lakh|crore)\b',
-                      text, re.IGNORECASE)
-    for n in nums:
-        tagged_dict[tag_name].append(''.join(n).strip())
-    text = re.sub(r'(\d+\.?\d*)(\s+)(thousand|million|billion|trillion|lac|lakh|crore)\b',
-                  tag_name, text, flags=re.IGNORECASE)
-
-    biggies = ['thousand', 'million', 'billion', 'trillion', 'lac', 'lakh', 'crore']
-    num_regex = r'\b(one|eleven|two|twelve|three|thirteen|four|fourteen|five|fifteen|' \
-                r'six|sixteen|seven|seventeen|eight|eighteen|nine|nineteen|ten|twenty|thirty|' \
-                r'forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|' \
-                r'trillion|lac|lakh|crore)\b'
-    tokens = re.findall(r"[\w']+|[.,!?;]", text)
-    numbers = re.findall(num_regex, text, re.IGNORECASE)
-    num_groups = list()
-    idx = 0
-    while idx < len(tokens):
-        group = list()
-        for token in tokens[idx:]:
-            if token.lower() in biggies:
-                if tokens.index(token) != 0:
-                    if re.match(r'\d+\.?\d*', tokens[tokens.index(token) - 1]):
-                        idx += 2
-                        break
-            if token in numbers:
-                group.append(token)
-                idx += 1
-                if idx == len(tokens):
-                    num_groups.append(' '.join(group))
-            elif token.lower() == 'and' and len(group):
-                group.append(token)
-                idx += 1
-                if idx == len(tokens):
-                    num_groups.append(' '.join(group))
-            else:
-                if group:
-                    num_groups.append(' '.join(group))
-                    idx += 1
-                    break
-                idx += 1
-    for group in num_groups:
-        group_re = r'\b' + group + r'\b'
-        tagged_dict[tag_name].append(group.strip())
-        text = re.sub(group_re, tag_name, text, count=1, flags=re.IGNORECASE)
-
-    if tag_name in tagged_dict:
-        tagged_dict[tag_name] = reoroder_tag_list(original_tokens, tagged_dict[tag_name])
-
-    return text
 
 
 def replace_date(text, tagged_dict, tag_name=None):
@@ -377,19 +323,6 @@ def replace_percentage(text, tagged_dict):
         tagged_dict[tag_name].append(''.join(perc).strip())
     return re.sub(r'\b(\d+\.?\d*\s*%|xx+\.?xx*\s*%)', tag_name, text, flags=re.IGNORECASE)
 
-
-def replace_number(text, tagged_dict, tag_name=None):
-    if not tag_name:
-        tag_name = TAG_PREFIX + r'NUMBER' + TAG_SUFFIX
-    numbers = re.findall(r'\b(\d+|xx+)(\.)(\d+|xx+)\b|\b(\d+|xx+)\b',
-                         text)
-    for num in numbers:
-        num = ''.join(num)
-        tagged_dict[tag_name].append(num)
-        text = re.sub(num, tag_name, text, flags=re.IGNORECASE, count=1)
-    return text
-
-
 def replace_number_range(text, tagged_dict):
     tag_name = TAG_PREFIX + r'NUMBER' + TAG_SUFFIX
     ranges = re.findall(r'((\d+[\.,]?\d*)(\s*[Xx\-~]\s*\d+[\.,]?\d*)+)', text)
@@ -426,84 +359,12 @@ def replace_enumeration(text, tagged_dict):
     return text
 
 
-def replace_hyphenated_terms(text, tagged_dict):
-    tag_name = TAG_PREFIX + r'SPLHYPHENATEDTERM' + TAG_SUFFIX
-    if len(re.findall(r'\-', text)) < 2:
-        return text
-    hyphenated_terms = re.findall(r'(<\w+>)((\-)(\w+))+', text, re.IGNORECASE)
-    for hyph_term in hyphenated_terms:
-        tagged_dict[tag_name].append(''.join(hyph_term).strip())
-    return re.sub(r'(<\w+>)((\-)(\w+))+', tag_name, text, re.IGNORECASE)
-
-
-def replace_phrases(text, tagged_dict):
-    tag_name = TAG_PREFIX + r'DOMAINPHRASE' + TAG_SUFFIX
-    hyphenated_terms = re.findall(r'(\w+(\-\w+)+)', text)
-    for hyph_term in hyphenated_terms:
-        if not len(hyph_term):
-            continue
-        val = ''.join(hyph_term[0]).strip()
-        if is_common_phrase(val.replace('-', ' ')):
-            continue
-        if len(non_dictionary_words(val.replace('-', ' '))) == len(val.split('-')):
-            tagged_dict[TAG_PREFIX + r'UNKNOWN' + TAG_SUFFIX].append(val)
-            text = re.sub(val, TAG_PREFIX + r'UNKNOWN' + TAG_SUFFIX, text, count=1)
-            continue
-        # if val.replace('-', ' ').islower():
-        #     tagged_dict[TAG_PREFIX + r'UNKNOWN' + TAG_SUFFIX].append(val)
-        #     text = re.sub(val, TAG_PREFIX + r'UNKNOWN' + TAG_SUFFIX, text, count=1)
-        #     continue
-        tagged_dict[tag_name].append(val)
-        text = re.sub(val, tag_name, text, count=1)
-    return text
-
-
-def replace_org_names(text, tagged_dict):
-    tag_name = TAG_PREFIX + r'COMPANYNAME' + TAG_SUFFIX
-    org_names = re.findall(r'((\w+)\s(enterprises|enterprise|technoloy|technologies|'
-                           r'services|pvt ltd|private limited|clinic|hospitals|hospital)'
-                           r'(pvt ltd|private limited)?)',
-                           text, flags=re.IGNORECASE)
-    for org in org_names:
-        tagged_dict[tag_name].append(''.join(org).strip())
-    return re.sub(r'((\w+)\s(enterprise|enterprises|technoloy|technologies|'
-                  r'pvt ltd|private limited|clinic|hospitals|hospital)'
-                  r'(pvt ltd|private limited)?)',
-                  tag_name, text, flags=re.IGNORECASE)
 
 
 def is_tag(text):
     return TAG_SUFFIX in text
 
 
-def tag_spacy_entities(entities, sent, tagged_dict, tags=None):
-    for entity in entities:
-        if tags and entity[0] not in tags:
-            continue
-        tag = entity[0]
-        value = entity[1]
-        # if is_dict_word(value):
-        #     continue
-        if value.strip():
-            if is_common_phrase(value):
-                continue
-            matches = re.findall(value, sent, re.IGNORECASE)
-            if not matches:
-                return sent
-            if tag == u'DATE':
-                tag = u'PERIOD'
-            elif tag == u'GPE':
-                tag = u'LOCALITY'
-            elif tag == u'ORG' or u'PERSON':
-                tag = u'NAMEDENTITY'
-            # elif tag == u'ORG':
-            #     tag = u'COMPANY'
-            # elif tag == u'PERSON':
-            #     tag = u'NAMEDENTITY'
-            tag = TAG_PREFIX + tag.replace('_', '').upper().strip() + TAG_SUFFIX
-            sent = re.sub(value, tag, sent, count=1)
-            tagged_dict[tag].append(value)
-    return sent
 
 
 # def tag_more_entities(text, entities, tagged_dict):
@@ -523,16 +384,6 @@ def tag_spacy_entities(entities, sent, tagged_dict, tags=None):
 #             tagged_dict[tag_name].append(entity)
 #             new_ents.append(entity)
 #     return text, new_ents
-
-
-def tag_terms(text, tag, tagged_dict, terms=None):
-    if not terms:
-        return text
-    regex = re.compile(r'\b%s\b' % r'\b|\b'.join(map(re.escape, terms)), flags=re.IGNORECASE)
-    for term in regex.findall(text):
-        tagged_dict[tag].append(''.join(term).strip())
-    text = regex.sub(tag, text)
-    return text
 
 
 def remove_tagged_terms(text):
@@ -556,47 +407,6 @@ def replace_unknown_terms(text, tagged_dict):
         text = re.sub(re.escape(val), tag_name, text, count=1)
     return text
 
-
-def tag_non_dictionary_word(text, tagged_dict):
-    candidates = get_ndw_candidates(text)
-    ndw_terms = list()
-    unknown_terms = list()
-    for term in candidates:
-        if term in set(string.punctuation):
-            continue
-        if term.isdigit():
-            continue
-        segmented_terms = segment_text(term)
-        segmented_terms = [term for term in segmented_terms if len(term) > 2]
-        if len(segmented_terms) > 1:
-            ndws = non_dictionary_words(' '.join(segmented_terms))
-            if len(ndws) < len(segmented_terms):
-                unknown_terms.append(term)
-                continue
-        if not is_dict_word(term):
-            ndw_terms.append(term)
-    text = tag_terms(text, tag=TAG_PREFIX + 'NDW' + TAG_SUFFIX, tagged_dict=tagged_dict, terms=ndw_terms)
-    text = tag_terms(text, tag=TAG_PREFIX + 'UNKNOWN' + TAG_SUFFIX, tagged_dict=tagged_dict, terms=unknown_terms)
-    return text
-
-
-def get_ndw_candidates(text):
-    text = remove_tagged_terms(text)
-    if text:
-        text = [t.strip() for t in text.split() if t.strip()]
-    candidates = list()
-    for candidate in text:
-        candidate = candidate.strip()
-        if not candidate:
-            continue
-        if candidate.strip()[-1] in string.punctuation and candidate.strip()[-1] not in (')', '}', ']'):
-            candidate = candidate[:-1]
-            if not candidate:
-                continue
-        if candidate in ["'s", "'t", "'d", "'ll", "'m"]:
-            continue
-        candidates.append(candidate)
-    return candidates
 
 
 def reoroder_tag_list(tokens, tags):

@@ -6,8 +6,8 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="sent_segment",
-    packages = ['sent_segment'],
-    version="0.0.6",
+    packages=['sent_segment'],
+    version="2.0.0",
     author="Reverie Language Technologies",
     author_email="astha.manchanda@reverieinc.com",
     description="A sentence segmentation API",
@@ -17,18 +17,14 @@ setuptools.setup(
     dowload_link = 'https://github.com/ashiman/sent_segment/archive/1.0.tar.gz',
     #packages=setuptools.find_packages(),
     classifiers=(
-        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.6.5",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ),
     install_requires=[
           'spacy==2.0.0',
-          'pyenchant',
           'numpy',
-          'wordsegment',
           'unidecode',
-          'logstash_formatter',
-          'statsd',
 
       ]
 )

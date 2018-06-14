@@ -1,7 +1,7 @@
 from sent_segment.spacy_utils import SpacyUtils
 name = "sent_segment"
 spacy_utils = SpacyUtils()
-import enchant
+nlp = None
 top_5000_words = ["the", "be", "and", "of", "a", "in", "to", "have", "to", "it", "I", "i"
                                                                                       "that", "for", "you", "he",
                   "with", "on", "do", "say", "this", "they",
@@ -773,8 +773,6 @@ top_5000_words = ["the", "be", "and", "of", "a", "in", "to", "have", "to", "it",
                   "apology", "till"]
 top_5000_words_dict = {word: idx for idx, word in enumerate(top_5000_words)}
 
-d_us = enchant.Dict('en_US')
-d_uk = enchant.Dict('en_UK')
 
 stop_words = [
     "i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your",

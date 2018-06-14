@@ -1,17 +1,21 @@
 import re
 from pprint import pprint
 import spacy
-from spacy.pipeline import DependencyParser
+# from spacy.pipeline import DependencyParser
 
 
 class SpacyUtils(object):
     parser = None
 
     def __init__(self):
-        self.parser = spacy.load('en')
+        self.parser = None
 
     def parse_text(self, text):
         return self.parser(text, disable=['entity', 'textcat'])
+
+    def load_model(self):
+        parser = spacy.load('en')
+        return parser
 
     @staticmethod
     def tag_pos(parsed_text):

@@ -1,18 +1,11 @@
 # -*- coding: utf-8 -*-
-
-import codecs
-import operator
 import re
-import string
 import time
-import wordsegment
 from unidecode import unidecode
-from sent_segment import d_uk, d_us, stop_words, top_5000_words_dict
 from sent_segment.common import COMMON_WORDS_THRESHOLD
-from sent_segment import d_uk, d_us, stop_words, top_5000_words_dict
+from sent_segment import stop_words, top_5000_words_dict
 
-from sent_segment.local import COMMON_ABBREVS, COMMON_SHORT_FORMS, SHORT_FORMS_REGEX, TAG_PREFIX, TAG_SUFFIX, \
-    COMMON_UNITS
+from sent_segment.local import COMMON_ABBREVS, SHORT_FORMS_REGEX, TAG_PREFIX, TAG_SUFFIX
 
 
 def cleanup_text(text):
@@ -52,26 +45,6 @@ def normalize(text):
     for pattern, value in SHORT_FORMS_REGEX.iteritems():  # strings like acc into account
         text = re.sub(pattern, value, text, flags=re.IGNORECASE)
     return text
-
-
-def segment_text(text):
-    segments = wordsegment.segment(text)
-    return segments
-
-
-def is_dict_word(w):
-    try:
-        if d_us.check(w) or d_uk.check(w):
-            return True
-        return False
-    except TypeError:
-        return False
-
-
-def dict_word_suggest(w):
-    if not w:
-        return None
-    return d_us.suggest(w)
 
 def is_stop_word(word):
     t0 = time.time()

@@ -1,26 +1,19 @@
 # Settings common across deployment environments.
-
-import logging
 import os
-from logstash_formatter import LogstashFormatterV1
-
 # Define log directory and file.
 # Set formatter to logstash format.
 # Set level to INFO
-LOGS_DIR = '/var/log/data_pipeline/'
-logger = logging.getLogger('rosetta')
-hdlr = logging.FileHandler(os.path.join(LOGS_DIR, 'rosetta_apis.log'))
-formatter = LogstashFormatterV1()
-hdlr.setFormatter(formatter)
-logger.addHandler(hdlr)
-logger.setLevel(logging.INFO)
+# LOGS_DIR = '/var/log/data_pipeline/'
+# logger = logging.getLogger('rosetta')
+# hdlr = logging.FileHandler(os.path.join(LOGS_DIR, 'rosetta_apis.log'))
+
 
 # <LEGACY SETTINGS>
 # These are some legacy settings related to fetching crawled data from
 # DataWeave. They had exposed an API using which we got the data.
 # Not relevant anymore
-RETAIL_MISSING_DATA_FILE = os.path.join(LOGS_DIR, 'dw_missing_data')
-RETAIL_URLH_FILE = os.path.join(LOGS_DIR, 'dw_retail_urlh')
+# RETAIL_MISSING_DATA_FILE = os.path.join(LOGS_DIR, 'dw_missing_data')
+# RETAIL_URLH_FILE = os.path.join(LOGS_DIR, 'dw_retail_urlh')
 
 # DW_API_KEY = 'c74dc287a17f9410182de76184559e08'
 DW_API_KEY = '4453b9e9738ca0f67922b2e20e2677ea'
