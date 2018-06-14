@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a553d782-a814-446c-917f-39cd046049b3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/dev.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/indic_settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/language_utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/language_utility.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/local.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/local.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/preprocessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/preprocessor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/prod.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/spacy_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/spacy_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/stag.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/tagger.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/tagger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sent_segment/text_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/sent_segment/text_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-    </list>
+    <list default="true" id="a553d782-a814-446c-917f-39cd046049b3" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,13 +14,22 @@
       <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="31">
+              <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="language_utility.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="language_utility.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sent_segment/language_utility.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="249">
@@ -138,10 +132,11 @@
         <option value="$PROJECT_DIR$/sent_segment/text_utils.py" />
         <option value="$PROJECT_DIR$/sent_segment/local.py" />
         <option value="$PROJECT_DIR$/sent_segment/preprocessor.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/sent_segment/__init__.py" />
         <option value="$PROJECT_DIR$/sent_segment/language_utility.py" />
         <option value="$PROJECT_DIR$/sent_segment/spacy_utils.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -159,11 +154,6 @@
           <expand>
             <path>
               <item name="sent_segment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sent_segment" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sent_segment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sent_segment" type="462c0819:PsiDirectoryNode" />
               <item name="sent_segment" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -263,7 +253,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2494043" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -273,7 +262,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.18896551" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.6317241" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.35310346" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -428,9 +417,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/rosettaenv/lib/python2.7/site-packages/wordsegment.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -555,13 +541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sent_segment/spacy_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
@@ -586,6 +565,20 @@
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
