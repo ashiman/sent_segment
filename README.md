@@ -1,7 +1,4 @@
-# Example Package
-This is an API for sentence segmentation.
-
-
+## Sentence Segmentation.
 
 # How to use??
 Example :
