@@ -11,6 +11,12 @@ def get_quantile(nums, q):
 Taken directly from http://stackoverflow.com/questions/1143671/python-sorting-list-of-dictionaries-by-multiple-keys/29849371
 Thanks to stackoverflow user hughdbrown
 """
+
+
+def cmp(a, b):
+    return (a > b) - (a < b)
+
+
 def multikeysort(items, columns):
     from operator import itemgetter
     comparers = [((itemgetter(col[1:].strip()), -1) if col.startswith('-') else
