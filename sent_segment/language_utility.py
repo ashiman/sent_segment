@@ -49,7 +49,7 @@ def sentence_segmentation(data, parser=None, contexts=None, delims=None):
 
 
 if __name__ == "__main__":
-    data = ["Wooo!! it was a great show. Go to the voot.com."]
+    data = ["Wooo!! it was a great show at 2 a.m. in farms. Go to the voot.com."]
     parser = spacy_utils.parser
     segmented_sentences = sentence_segmentation(data)
 

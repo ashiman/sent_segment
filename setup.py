@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="sent_segment",
     packages=['sent_segment'],
-    version="2.0.1",
+    version="2.0.2",
     author="Reverie Language Technologies",
     author_email="astha.manchanda@reverieinc.com",
     description="A sentence segmentation API",

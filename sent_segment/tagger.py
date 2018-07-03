@@ -73,8 +73,8 @@ def replace_money(text, tagged_dict):
 
 def replace_time(text, tagged_dict):
     original_tokens = text.split()
-    text = re.sub("a.m.", "am", text, flags=re.IGNORECASE)
-    text = re.sub("p.m.", "pm", text, flags=re.IGNORECASE)
+    text = re.sub("(a\.m\.)", "am", text, flags=re.IGNORECASE)
+    text = re.sub("(p\.m\.)", "pm", text, flags=re.IGNORECASE)
 
     tag_name = TAG_PREFIX + r'TIME' + TAG_SUFFIX
     dts = re.findall(r'\b(\d{1,2}\s?:\s?\d{2}\s?)(:\s?\d{2})?(\s)*(am|pm|a.m.|p.m.|oclock|o\'clock)?\b',
